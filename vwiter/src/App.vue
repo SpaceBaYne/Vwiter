@@ -1,30 +1,93 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+
+    <header>
+      <router-link to='/profile' class="icon"><i class="fas fa-user"></i></router-link>
+      <h1>{{ $route.name }}</h1>
+    </header>
+
+    <router-view class="view" />
+
+    <footer>
+      <Navbar class="navbar" />
+    </footer>
+
   </div>
-  <router-view/>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+
+
+<script>
+import Navbar from './components/Navbar.vue';
+
+
+export default {
+  name: 'App',
+  components: {Navbar},
 }
 
-#nav {
-  padding: 30px;
+</script>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
 
-    &.router-link-exact-active {
-      color: #42b983;
+
+
+<style lang="scss">
+
+  $background-color: #15202B;
+  $subtitle-color: #6E767D;
+  $primary-color: #3EAF7C;
+
+  body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    background-color: $background-color;
+    color: white;
+  }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  header{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    border-bottom: 1px solid $subtitle-color;
+    font-size: .7rem;
+
+    h1{
+      margin: 1rem;
+    }
+    .icon{
+      text-decoration: none;
+      color: white;
+      font-size: 1.5rem;
+      margin: 1rem;
     }
   }
-}
+
+  .view{
+    position: relative;
+    height: 100%;
+    width: 90%;
+  }
+
+  footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    border-top: 1px solid $subtitle-color;
+  }
+
+  a.router-link-active i{
+    color: $primary-color;
+  }
+
+
 </style>
